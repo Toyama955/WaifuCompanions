@@ -9,7 +9,7 @@ export const characters = pgTable("characters", {
   description: text("description").notNull(),
   imageUrl: text("image_url").notNull(),
   affection: integer("affection").notNull().default(0),
-  traits: jsonb("traits").$type<string[]>().notNull().default([]),
+  traits: text("traits").array().notNull().default([]),
   responses: jsonb("responses").$type<{
     greeting: string[];
     compliment: string[];
