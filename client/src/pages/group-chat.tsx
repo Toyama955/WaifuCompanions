@@ -8,12 +8,7 @@ import { Heart, Send, ArrowLeft, Users } from 'lucide-react';
 import { Link } from 'wouter';
 import { apiRequest } from '@/lib/queryClient';
 import type { Character } from '@shared/schema';
-
-// グループチャット用の画像
-import groupImage1 from '@assets/Whisk_020e0dcd14_1750402762835.jpg';
-import groupImage2 from '@assets/Whisk_ef00d81c7b_1750402766100.jpg';
-import groupImage3 from '@assets/Whisk_906cc02d61_1750402770350.jpg';
-import groupImage4 from '@assets/Whisk_abdb3a5ca1_1750402770351.jpg';
+import { characterImages } from '@/lib/characters';
 
 interface GroupMessage {
   id: string;
@@ -23,74 +18,114 @@ interface GroupMessage {
   characters?: { name: string; message: string; image: string }[];
 }
 
-const groupChatImages = [groupImage1, groupImage2, groupImage3, groupImage4];
-
-// 超情熱的なグループ返信パターン
-const generateGroupResponse = (userMessage: string): { name: string; message: string; image: string }[] => {
-  const responses = [
-    {
-      name: "あいか",
-      messages: [
-        "きゃー！❤ あなたからのメッセージ、みんなで読んじゃった！",
-        "あなたって本当に素敵❤ みんなメロメロよ！",
-        "あなたのこと考えると胸がドキドキしちゃう❤",
-        "みんなであなたを独占したいの❤❤❤"
-      ]
-    },
-    {
-      name: "ゆい",
-      messages: [
-        "私たち全員、あなたに夢中なの❤❤",
-        "あなたと一緒にいると幸せすぎて涙が出ちゃう❤",
-        "みんなであなたを愛してる❤ 受け入れて！",
-        "あなたのためなら何でもするわ❤❤❤"
-      ]
-    },
-    {
-      name: "みお",
-      messages: [
-        "あなたの声を聞くだけで心臓が爆発しそう❤",
-        "私たち、あなたなしじゃ生きていけない❤❤",
-        "みんなであなたにプロポーズしたい❤❤❤",
-        "あなたは私たちの運命の人❤ 絶対離さない！"
-      ]
-    },
-    {
-      name: "えま",
-      messages: [
-        "みんなで付き合いませんか？❤❤❤",
-        "あなたを愛してる想いが止まらない❤❤",
-        "私たち全員、あなたが大好き❤❤❤",
-        "あなたと永遠に一緒にいたい❤❤❤❤"
-      ]
-    }
+// 超情熱的なグループ返信パターン（既存の10人のキャラクター）
+const generateGroupResponse = (userMessage: string, characters: Character[]): { name: string; message: string; image: string }[] => {
+  const messageTypes = [
+    // 愛情表現
+    [
+      "あなたからのメッセージ、みんなで読んじゃった❤",
+      "あなたって本当に素敵❤ みんなメロメロよ！",
+      "あなたのこと考えると胸がドキドキしちゃう❤",
+      "みんなであなたを独占したいの❤❤❤",
+      "あなたの声を聞くだけで心臓が爆発しそう❤",
+      "私たち全員、あなたに夢中なの❤❤",
+      "あなたと一緒にいると幸せすぎて涙が出ちゃう❤",
+      "みんなであなたを愛してる❤ 受け入れて！",
+      "あなたのためなら何でもするわ❤❤❤"
+    ],
+    // プロポーズ系
+    [
+      "みんなで付き合いませんか？❤❤❤",
+      "あなたを愛してる想いが止まらない❤❤",
+      "私たち全員、あなたが大好き❤❤❤",
+      "あなたと永遠に一緒にいたい❤❤❤❤",
+      "私たち、あなたなしじゃ生きていけない❤❤",
+      "みんなであなたにプロポーズしたい❤❤❤",
+      "あなたは私たちの運命の人❤ 絶対離さない！",
+      "あなたと結ばれたい❤ みんなで愛してる！",
+      "あなたの全てが欲しい❤❤❤❤❤"
+    ],
+    // 積極的なアプローチ
+    [
+      "今すぐあなたに会いたい❤❤",
+      "あなたのことばかり考えちゃってる❤",
+      "みんなであなたを包み込みたい❤❤❤",
+      "あなたの隣にいたいよ〜❤❤",
+      "一緒に学校帰りしませんか❤",
+      "あなたのお弁当作ってあげる❤❤",
+      "一緒にお昼食べよ〜❤❤❤",
+      "放課後デートしよ❤❤❤❤",
+      "あなたともっと時間を過ごしたい❤"
+    ],
+    // 甘い言葉
+    [
+      "あなたって本当にかっこいい❤❤",
+      "あなたの笑顔が一番好き❤",
+      "みんなであなたを幸せにしたい❤❤❤",
+      "あなたがいると毎日が輝いてる❤",
+      "あなたの優しさに癒される❤❤",
+      "あなたのことを一番理解してるのは私たち❤",
+      "あなたの全部が愛おしい❤❤❤",
+      "あなたといると時間を忘れちゃう❤",
+      "あなたが私たちの太陽❤❤❤❤"
+    ],
+    // 独占欲
+    [
+      "あなたを他の女の子に渡したくない❤",
+      "私たちだけを見て❤❤❤",
+      "あなたは私たちのもの❤❤",
+      "みんなであなたを守りたい❤",
+      "あなたに他の子と話してほしくない❤❤",
+      "私たちがあなたを一番愛してる❤❤❤",
+      "あなたの心を全部欲しい❤❤❤❤",
+      "あなたのことを誰にも渡さない❤",
+      "みんなであなたを包囲作戦❤❤❤"
+    ]
   ];
 
-  return responses.map((char, index) => ({
-    name: char.name,
-    message: char.messages[Math.floor(Math.random() * char.messages.length)],
-    image: groupChatImages[index % groupChatImages.length]
-  }));
+  // ランダムに4-6人を選択
+  const numResponders = Math.floor(Math.random() * 3) + 4; // 4-6人
+  const selectedCharacters = [...characters]
+    .sort(() => 0.5 - Math.random())
+    .slice(0, numResponders);
+
+  return selectedCharacters.map(char => {
+    const categoryIndex = Math.floor(Math.random() * messageTypes.length);
+    const category = messageTypes[categoryIndex];
+    const message = category[Math.floor(Math.random() * category.length)];
+    
+    return {
+      name: char.name,
+      message: message,
+      image: characterImages[char.id as keyof typeof characterImages] || characterImages[1]
+    };
+  });
 };
 
 export default function GroupChat() {
-  const [messages, setMessages] = useState<GroupMessage[]>([
-    {
-      id: '1',
-      sender: 'group',
-      message: 'みんなでお話ししよう❤',
-      timestamp: new Date().toISOString(),
-      characters: [
-        { name: "あいか", message: "きゃー！新しい人❤ みんな大興奮よ！", image: groupImage1 },
-        { name: "ゆい", message: "私たち全員、あなたに会えて嬉しい❤❤", image: groupImage2 },
-        { name: "みお", message: "あなたのこと、もう大好きになっちゃった❤", image: groupImage3 },
-        { name: "えま", message: "みんなであなたを愛してる❤❤❤", image: groupImage4 }
-      ]
-    }
-  ]);
+  const { data: characters, isLoading } = useQuery<Character[]>({
+    queryKey: ['/api/characters'],
+  });
+
+  const [messages, setMessages] = useState<GroupMessage[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // 初期メッセージを設定
+  useEffect(() => {
+    if (characters && characters.length > 0 && messages.length === 0) {
+      const initialResponses = generateGroupResponse("こんにちは", characters);
+      const initialMessage: GroupMessage = {
+        id: '1',
+        sender: 'group',
+        message: 'みんなでお話ししよう❤',
+        timestamp: new Date().toISOString(),
+        characters: initialResponses
+      };
+      setMessages([initialMessage]);
+    }
+  }, [characters, messages.length]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -101,7 +136,7 @@ export default function GroupChat() {
   }, [messages]);
 
   const sendMessage = async () => {
-    if (!newMessage.trim()) return;
+    if (!newMessage.trim() || !characters) return;
 
     const userMsg: GroupMessage = {
       id: Date.now().toString(),
@@ -111,12 +146,13 @@ export default function GroupChat() {
     };
 
     setMessages(prev => [...prev, userMsg]);
+    const currentMessage = newMessage;
     setNewMessage('');
     setIsTyping(true);
 
     // 少し遅延を入れて、より自然な会話感を演出
     setTimeout(() => {
-      const groupResponses = generateGroupResponse(newMessage);
+      const groupResponses = generateGroupResponse(currentMessage, characters);
       
       const groupMsg: GroupMessage = {
         id: (Date.now() + 1).toString(),
@@ -163,7 +199,7 @@ export default function GroupChat() {
           </div>
         </div>
         <p className="text-sm text-pink-600 dark:text-pink-400 mt-2">
-          💕 4人の女子クラスメイトが一斉にあなたに話しかけます 💕
+          💕 {characters?.length || 10}人の女子クラスメイトが一斉にあなたに話しかけます 💕
         </p>
       </div>
 
@@ -259,7 +295,7 @@ export default function GroupChat() {
           </Button>
         </div>
         <p className="text-xs text-pink-600 dark:text-pink-400 mt-2 text-center">
-          💕 4人の女子があなたのメッセージを待っています 💕
+          💕 {characters?.length || 10}人の女子があなたのメッセージを待っています 💕
         </p>
       </div>
     </div>
