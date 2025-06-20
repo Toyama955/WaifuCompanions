@@ -1,4 +1,4 @@
-# Dating Companion Application
+# Dating Classmate Application
 
 ## Overview
 
@@ -97,6 +97,9 @@ This is a Japanese-style dating simulation web application where users can inter
 ```
 Changelog:
 - June 20, 2025. Initial setup
+- June 20, 2025. Updated all character affection levels to maximum (100)
+- June 20, 2025. Enhanced character responses to express maximum love for player
+- June 20, 2025. Changed "コンパニオン" to "クラスメイト" throughout application
 ```
 
 ## User Preferences

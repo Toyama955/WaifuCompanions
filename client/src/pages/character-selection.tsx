@@ -38,7 +38,7 @@ export default function CharacterSelection() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <Heart className="text-primary text-2xl animate-heartbeat" />
-              <h1 className="text-2xl font-bold text-deep japanese-heading">恋愛コンパニオン</h1>
+              <h1 className="text-2xl font-bold text-deep japanese-heading">恋愛クラスメイト</h1>
             </div>
             <div className="flex items-center space-x-4">
               <Button
