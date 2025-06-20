@@ -22,7 +22,7 @@ export default function ChatInterface() {
     queryKey: [`/api/characters/${characterId}`],
   });
 
-  const { data: conversation } = useQuery<Conversation>({
+  const { data: conversation, refetch: refetchConversation } = useQuery<Conversation>({
     queryKey: [`/api/conversations/${characterId}?userId=default-user`],
   });
 
@@ -32,6 +32,7 @@ export default function ChatInterface() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`/api/conversations/${characterId}`] });
+      refetchConversation();
     }
   });
 
@@ -42,9 +43,9 @@ export default function ChatInterface() {
       });
       return response.json();
     },
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       // Add character response to conversation
-      addMessageMutation.mutate({
+      await addMessageMutation.mutateAsync({
         message: data.response,
         sender: 'character',
         userId: 'default-user'
@@ -57,6 +58,8 @@ export default function ChatInterface() {
         }
         return old;
       });
+      
+      setIsTyping(false);
     }
   });
 
@@ -85,7 +88,6 @@ export default function ChatInterface() {
     // Generate and add character response
     setTimeout(() => {
       generateResponseMutation.mutate(userMessage);
-      setIsTyping(false);
     }, 1000 + Math.random() * 2000);
   };
 
@@ -154,13 +156,19 @@ export default function ChatInterface() {
       {/* Chat Messages Container */}
       <div className="container mx-auto px-4 py-6 max-w-4xl">
         <div className="space-y-4 mb-6 min-h-96">
-          {conversation?.messages.map((msg) => (
-            <ChatMessage
-              key={msg.id}
-              message={msg}
-              character={character}
-            />
-          ))}
+          {conversation?.messages && Array.isArray(conversation.messages) ? (
+            conversation.messages.map((msg) => (
+              <ChatMessage
+                key={msg.id}
+                message={msg}
+                character={character}
+              />
+            ))
+          ) : (
+            <div className="text-center text-gray-500 py-8">
+              <p className="japanese-text">会話を開始してください</p>
+            </div>
+          )}
           
           {isTyping && (
             <div className="flex items-start space-x-3">

@@ -168,7 +168,13 @@ export class MemStorage implements IStorage {
       imageUrl: insertCharacter.imageUrl,
       affection: insertCharacter.affection || 0,
       traits: insertCharacter.traits || [],
-      responses: insertCharacter.responses
+      responses: insertCharacter.responses || {
+        greeting: [],
+        compliment: [],
+        question: [],
+        romantic: [],
+        casual: []
+      }
     };
     this.characters.set(id, character);
     return character;
@@ -195,7 +201,7 @@ export class MemStorage implements IStorage {
       id,
       characterId: insertConversation.characterId,
       userId: insertConversation.userId,
-      messages: Array.isArray(insertConversation.messages) ? insertConversation.messages : [],
+      messages: [],
       affectionLevel: insertConversation.affectionLevel || 0,
       lastMessageAt: new Date()
     };
@@ -224,7 +230,14 @@ export class MemStorage implements IStorage {
       });
     }
 
-    const updatedMessages = [...conversation.messages, message];
+    const newMessage = {
+      id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+      message: message.message,
+      sender: message.sender as 'user' | 'character',
+      timestamp: new Date().toISOString()
+    };
+    
+    const updatedMessages = [...(conversation.messages || []), newMessage];
     return this.updateConversation(conversation.id, { messages: updatedMessages });
   }
 
