@@ -100,6 +100,10 @@ Changelog:
 - June 20, 2025. Updated all character affection levels to maximum (100)
 - June 20, 2025. Enhanced character responses to express maximum love for player
 - June 20, 2025. Changed "コンパニオン" to "クラスメイト" throughout application
+- June 20, 2025. Added heart symbols (❤) to all character responses for intense passion
+- June 20, 2025. Added 4 new band member characters (はるか, まり, りん, みれい)
+- June 20, 2025. Removed "完全オフライン対応" text from main screen
+- June 20, 2025. Updated main page descriptions to use "クラスメイト" instead of "コンパニオン"
 ```
 
 ## User Preferences

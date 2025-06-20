@@ -77,13 +77,8 @@ export default function CharacterSelection() {
             あなたの運命の人を選んでください
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto japanese-text">
-            美しいAIコンパニオンがあなたを待っています。それぞれ独特の性格と魅力を持っています。
+            美しいクラスメイトがあなたを待っています。それぞれ独特の性格と魅力を持っています。
           </p>
-          <div className="flex justify-center items-center mt-4 space-x-2">
-            <Star className="text-primary animate-sparkle" />
-            <span className="text-primary font-medium japanese-text">完全オフライン対応</span>
-            <Star className="text-primary animate-sparkle" />
-          </div>
         </div>
 
         {/* Character Grid */}
