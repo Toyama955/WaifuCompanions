@@ -90,7 +90,7 @@ export default function CharacterSelection() {
               💕 みんなでグループチャット 💕
             </Button>
             <p className="text-sm text-pink-600 dark:text-pink-400 mt-2">
-              ✨ 4人の女子が一斉にあなたに情熱的に話しかけます ✨
+              ✨ 10人の女子が一斉にあなたに情熱的に話しかけます ✨
             </p>
           </div>
         </div>

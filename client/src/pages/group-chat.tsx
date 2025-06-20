@@ -12,14 +12,24 @@ import { characterImages } from '@/lib/characters';
 
 interface GroupMessage {
   id: string;
-  sender: 'user' | 'group';
+  sender: 'user' | 'character';
   message: string;
   timestamp: string;
-  characters?: { name: string; message: string; image: string }[];
+  characterName?: string;
+  characterImage?: string;
 }
 
-// 超情熱的なグループ返信パターン（既存の10人のキャラクター）
-const generateGroupResponse = (userMessage: string, characters: Character[]): { name: string; message: string; image: string }[] => {
+interface IndividualMessage {
+  id: string;
+  sender: 'user' | 'character';
+  message: string;
+  timestamp: string;
+  characterName?: string;
+  characterImage?: string;
+}
+
+// 超情熱的なグループ返信パターン（全10人のキャラクター）
+const generateIndividualResponses = (userMessage: string, characters: Character[]): IndividualMessage[] => {
   const messageTypes = [
     // 愛情表現
     [
@@ -83,21 +93,19 @@ const generateGroupResponse = (userMessage: string, characters: Character[]): { 
     ]
   ];
 
-  // ランダムに4-6人を選択
-  const numResponders = Math.floor(Math.random() * 3) + 4; // 4-6人
-  const selectedCharacters = [...characters]
-    .sort(() => 0.5 - Math.random())
-    .slice(0, numResponders);
-
-  return selectedCharacters.map(char => {
+  // 全10人のキャラクターが個別にメッセージを返信
+  return characters.map((char, index) => {
     const categoryIndex = Math.floor(Math.random() * messageTypes.length);
     const category = messageTypes[categoryIndex];
     const message = category[Math.floor(Math.random() * category.length)];
     
     return {
-      name: char.name,
+      id: `char-${Date.now()}-${index}`,
+      sender: 'character' as const,
       message: message,
-      image: characterImages[char.id as keyof typeof characterImages] || characterImages[1]
+      timestamp: new Date().toISOString(),
+      characterName: char.name,
+      characterImage: characterImages[char.id as keyof typeof characterImages] || characterImages[1]
     };
   });
 };
@@ -115,15 +123,16 @@ export default function GroupChat() {
   // 初期メッセージを設定
   useEffect(() => {
     if (characters && characters.length > 0 && messages.length === 0) {
-      const initialResponses = generateGroupResponse("こんにちは", characters);
-      const initialMessage: GroupMessage = {
-        id: '1',
-        sender: 'group',
-        message: 'みんなでお話ししよう❤',
-        timestamp: new Date().toISOString(),
-        characters: initialResponses
-      };
-      setMessages([initialMessage]);
+      const initialResponses = generateIndividualResponses("こんにちは", characters);
+      const initialMessages: GroupMessage[] = initialResponses.map(response => ({
+        id: response.id,
+        sender: 'character',
+        message: response.message,
+        timestamp: response.timestamp,
+        characterName: response.characterName,
+        characterImage: response.characterImage
+      }));
+      setMessages(initialMessages);
     }
   }, [characters, messages.length]);
 
@@ -152,17 +161,23 @@ export default function GroupChat() {
 
     // 少し遅延を入れて、より自然な会話感を演出
     setTimeout(() => {
-      const groupResponses = generateGroupResponse(currentMessage, characters);
+      const individualResponses = generateIndividualResponses(currentMessage, characters);
       
-      const groupMsg: GroupMessage = {
-        id: (Date.now() + 1).toString(),
-        sender: 'group',
-        message: 'みんなからの愛のメッセージ❤❤❤',
-        timestamp: new Date().toISOString(),
-        characters: groupResponses
-      };
+      // 各キャラクターのメッセージを個別に追加（短い間隔で順次表示）
+      individualResponses.forEach((response, index) => {
+        setTimeout(() => {
+          const characterMsg: GroupMessage = {
+            id: response.id,
+            sender: 'character',
+            message: response.message,
+            timestamp: response.timestamp,
+            characterName: response.characterName,
+            characterImage: response.characterImage
+          };
+          setMessages(prev => [...prev, characterMsg]);
+        }, index * 200); // 200ms間隔で順次表示
+      });
 
-      setMessages(prev => [...prev, groupMsg]);
       setIsTyping(false);
     }, 1500);
   };
@@ -199,13 +214,13 @@ export default function GroupChat() {
           </div>
         </div>
         <p className="text-sm text-pink-600 dark:text-pink-400 mt-2">
-          💕 {characters?.length || 10}人の女子クラスメイトが一斉にあなたに話しかけます 💕
+          💕 10人の女子が一斉にあなたに話しかけます 💕
         </p>
       </div>
 
       {/* チャットエリア */}
       <ScrollArea className="flex-1 p-4">
-        <div className="space-y-6">
+        <div className="space-y-4">
           {messages.map((message) => (
             <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
               {message.sender === 'user' ? (
@@ -219,37 +234,33 @@ export default function GroupChat() {
                   </p>
                 </div>
               ) : (
-                <div className="max-w-4xl">
-                  <div className="bg-white/90 dark:bg-gray-800/90 rounded-lg p-4 shadow-lg border border-pink-200 dark:border-pink-800">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {message.characters?.map((char, index) => (
-                        <div key={index} className="flex items-start gap-3 p-3 bg-pink-50/50 dark:bg-pink-950/50 rounded-lg">
-                          <Avatar className="w-12 h-12 border-2 border-pink-300 dark:border-pink-700">
-                            <AvatarImage src={char.image} alt={char.name} />
-                            <AvatarFallback className="bg-pink-200 dark:bg-pink-800 text-pink-800 dark:text-pink-200">
-                              {char.name.charAt(0)}
-                            </AvatarFallback>
-                          </Avatar>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="font-semibold text-pink-800 dark:text-pink-200 text-sm">
-                                {char.name}
-                              </span>
-                              <Heart className="w-4 h-4 fill-pink-500 text-pink-500" />
-                            </div>
-                            <p className="text-sm text-gray-700 dark:text-gray-300">
-                              {char.message}
-                            </p>
-                          </div>
+                <div className="max-w-md">
+                  <div className="bg-white/90 dark:bg-gray-800/90 rounded-lg p-3 shadow-lg border border-pink-200 dark:border-pink-800">
+                    <div className="flex items-start gap-3">
+                      <Avatar className="w-10 h-10 border-2 border-pink-300 dark:border-pink-700">
+                        <AvatarImage src={message.characterImage} alt={message.characterName} />
+                        <AvatarFallback className="bg-pink-200 dark:bg-pink-800 text-pink-800 dark:text-pink-200">
+                          {message.characterName?.charAt(0)}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="font-semibold text-pink-800 dark:text-pink-200 text-sm">
+                            {message.characterName}
+                          </span>
+                          <Heart className="w-4 h-4 fill-pink-500 text-pink-500" />
                         </div>
-                      ))}
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                          {message.message}
+                        </p>
+                        <p className="text-xs text-pink-600 dark:text-pink-400 mt-1">
+                          {new Date(message.timestamp).toLocaleTimeString('ja-JP', { 
+                            hour: '2-digit', 
+                            minute: '2-digit' 
+                          })}
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-xs text-pink-600 dark:text-pink-400 mt-3 text-center">
-                      {new Date(message.timestamp).toLocaleTimeString('ja-JP', { 
-                        hour: '2-digit', 
-                        minute: '2-digit' 
-                      })}
-                    </p>
                   </div>
                 </div>
               )}
@@ -265,7 +276,7 @@ export default function GroupChat() {
                     <div className="w-2 h-2 bg-pink-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                     <div className="w-2 h-2 bg-pink-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                   </div>
-                  <span className="text-sm text-pink-600 dark:text-pink-400">みんながお返事を考えています❤</span>
+                  <span className="text-sm text-pink-600 dark:text-pink-400">10人の女子がお返事を考えています❤</span>
                 </div>
               </div>
             </div>
@@ -295,7 +306,7 @@ export default function GroupChat() {
           </Button>
         </div>
         <p className="text-xs text-pink-600 dark:text-pink-400 mt-2 text-center">
-          💕 {characters?.length || 10}人の女子があなたのメッセージを待っています 💕
+          💕 10人の女子があなたのメッセージを待っています 💕
         </p>
       </div>
     </div>
