@@ -93,6 +93,20 @@ export default function CharacterSelection() {
           ))}
         </div>
 
+        {/* Group Chat Button - Above Special Features */}
+        <div className="text-center mb-8">
+          <Button 
+            size="lg" 
+            onClick={() => setLocation('/group-chat')}
+            className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-8 py-4 text-lg font-semibold shadow-lg rounded-full transform hover:scale-105 transition-all duration-300"
+          >
+            💕 みんなでグループチャット 💕
+          </Button>
+          <p className="text-sm text-pink-600 dark:text-pink-400 mt-2">
+            ✨ 全員と話します ✨
+          </p>
+        </div>
+
         {/* Feature Highlights */}
         <div className="bg-white/50 backdrop-blur-sm rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold text-deep mb-6 japanese-heading">特別な機能</h3>
@@ -113,20 +127,6 @@ export default function CharacterSelection() {
               <p className="text-sm text-gray-600 japanese-text">進歩をセーブして継続</p>
             </div>
           </div>
-        </div>
-
-        {/* Group Chat Button - Bottom Section */}
-        <div className="text-center mt-12 pt-8 border-t border-primary/20">
-          <Button 
-            size="lg" 
-            onClick={() => setLocation('/group-chat')}
-            className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-8 py-4 text-lg font-semibold shadow-lg rounded-full transform hover:scale-105 transition-all duration-300"
-          >
-            💕 みんなでグループチャット 💕
-          </Button>
-          <p className="text-sm text-pink-600 dark:text-pink-400 mt-2">
-            ✨ 全員と話します ✨
-          </p>
         </div>
       </main>
 
