@@ -104,6 +104,10 @@ Changelog:
 - June 20, 2025. Added 4 new band member characters (はるか, まり, りん, みれい)
 - June 20, 2025. Removed "完全オフライン対応" text from main screen
 - June 20, 2025. Updated main page descriptions to use "クラスメイト" instead of "コンパニオン"
+- June 20, 2025. Added group chat feature where all 10 characters respond individually
+- June 20, 2025. Expanded message variations to 8 categories with 15+ messages each (112 total messages)
+- June 20, 2025. Fixed 404 navigation error from group chat to main page
+- June 20, 2025. Implemented sequential message display with 200ms intervals for realistic chat experience
 ```
 
 ## User Preferences
