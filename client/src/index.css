@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500&display=swap');
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(210, 40%, 8%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215, 16%, 47%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 40%, 8%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 40%, 8%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --primary: hsl(343, 100%, 71%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(270, 50%, 62%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(350, 40%, 80%);
+  --accent-foreground: hsl(210, 40%, 8%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(343, 100%, 71%);
+  --radius: 0.5rem;
+  
+  /* Custom Japanese-style colors */
+  --romantic: hsl(343, 100%, 95%);
+  --deep: hsl(210, 40%, 8%);
+  --sakura: hsl(343, 60%, 85%);
+  --lavender: hsl(270, 30%, 85%);
+}
+
+.dark {
+  --background: hsl(210, 40%, 4%);
+  --foreground: hsl(210, 40%, 98%);
+  --muted: hsl(210, 40%, 15%);
+  --muted-foreground: hsl(215, 16%, 65%);
+  --popover: hsl(210, 40%, 4%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --card: hsl(210, 40%, 4%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --border: hsl(215, 27%, 20%);
+  --input: hsl(215, 27%, 20%);
+  --primary: hsl(343, 100%, 71%);
+  --primary-foreground: hsl(210, 40%, 8%);
+  --secondary: hsl(270, 50%, 62%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(350, 40%, 80%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 62%, 40%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(343, 100%, 71%);
+  
+  --romantic: hsl(343, 40%, 15%);
+  --deep: hsl(210, 40%, 98%);
+  --sakura: hsl(343, 30%, 25%);
+  --lavender: hsl(270, 20%, 25%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-pink-50 via-white to-pink-100 text-foreground font-sans antialiased;
+    font-family: 'Noto Sans JP', sans-serif;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif JP', serif;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--romantic) 0%, var(--background) 50%, var(--accent) 100%);
+  }
+
+  .character-card {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .character-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .chat-bubble {
+    position: relative;
+  }
+
+  .chat-bubble-left::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid white;
+  }
+
+  .chat-bubble-right::before {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid var(--primary);
+  }
+
+  .japanese-text {
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  .japanese-heading {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  .animate-sparkle {
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+
+  .text-romantic {
+    color: var(--romantic);
+  }
+
+  .text-deep {
+    color: var(--deep);
+  }
+
+  .bg-romantic {
+    background-color: var(--romantic);
+  }
+
+  .bg-deep {
+    background-color: var(--deep);
+  }
+
+  .border-romantic {
+    border-color: var(--romantic);
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-10px); 
+  }
+}
+
+@keyframes glow {
+  from { 
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.3); 
+  }
+  to { 
+    box-shadow: 0 0 30px rgba(255, 107, 157, 0.6); 
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.1); 
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(0.8); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.2); 
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary)/80;
+}
