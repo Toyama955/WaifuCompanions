@@ -79,20 +79,6 @@ export default function CharacterSelection() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto japanese-text">
             美しいクラスメイトがあなたを待っています。それぞれ独特の性格と魅力を持っています。
           </p>
-          
-          {/* Group Chat Button */}
-          <div className="mt-8 mb-6">
-            <Button 
-              size="lg" 
-              onClick={() => setLocation('/group-chat')}
-              className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-8 py-4 text-lg font-semibold shadow-lg rounded-full transform hover:scale-105 transition-all duration-300"
-            >
-              💕 みんなでグループチャット 💕
-            </Button>
-            <p className="text-sm text-pink-600 dark:text-pink-400 mt-2">
-              ✨ 10人の女子が一斉にあなたに情熱的に話しかけます ✨
-            </p>
-          </div>
         </div>
 
         {/* Character Grid */}
@@ -127,6 +113,20 @@ export default function CharacterSelection() {
               <p className="text-sm text-gray-600 japanese-text">進歩をセーブして継続</p>
             </div>
           </div>
+        </div>
+
+        {/* Group Chat Button - Bottom Section */}
+        <div className="text-center mt-12 pt-8 border-t border-primary/20">
+          <Button 
+            size="lg" 
+            onClick={() => setLocation('/group-chat')}
+            className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-8 py-4 text-lg font-semibold shadow-lg rounded-full transform hover:scale-105 transition-all duration-300"
+          >
+            💕 みんなでグループチャット 💕
+          </Button>
+          <p className="text-sm text-pink-600 dark:text-pink-400 mt-2">
+            ✨ 全員と話します ✨
+          </p>
         </div>
       </main>
 
