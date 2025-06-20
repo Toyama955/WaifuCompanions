@@ -1,0 +1,15 @@
+{
+  "name": "dating-classmate-game-built",
+  "version": "1.0.0",
+  "description": "恋愛クラスメイト - ビルド済み版",
+  "main": "start-server.js",
+  "scripts": {
+    "start": "node start-server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "keywords": ["dating", "simulation", "japanese", "game"],
+  "author": "Dating Classmate Team",
+  "license": "Private"
+}
