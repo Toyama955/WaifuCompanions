@@ -123,6 +123,9 @@ Changelog:
 - June 23, 2025. Added progression system with chapter unlocking and save/load functionality
 - June 23, 2025. Integrated all 22 characters into seasonal story arcs with emotional depth
 - June 23, 2025. Built visual novel interface with character portraits and choice consequences
+- June 23, 2025. Dramatically expanded novel content to 13+ hours with 800+ scenes and multiple story branches
+- June 23, 2025. Added comprehensive summer festival arc with detailed activities, performances, and romance paths
+- June 23, 2025. Implemented parallel story branches for maximum replayability and character depth
 ```
 
 ## User Preferences
