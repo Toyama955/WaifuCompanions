@@ -1,10 +1,26 @@
 export const characterImages = {
   1: "/attached_assets/Whisk_557de62d0e_1750392189708.jpg",
   2: "/attached_assets/Whisk_667853873f_1750392189708.jpg", 
-  3: "/attached_assets/Whisk_a7b850c577_1750392189709.jpg",
-  4: "/attached_assets/Whisk_db75933b6f_1750392189709.jpg",
-  5: "/attached_assets/Whisk_f10f501e8c_1750392189709.jpg",
-  6: "/attached_assets/Whisk_f18b10378a_1750392189709.jpg"
+  3: "/attached_assets/Whisk_6f0031099f_1750392189707.jpg",
+  4: "/attached_assets/Whisk_9c345a2714_1750392189708.jpg",
+  5: "/attached_assets/Whisk_a7b850c577_1750392189709.jpg",
+  6: "/attached_assets/Whisk_db75933b6f_1750392189709.jpg",
+  7: "/attached_assets/image_1750397062491.jpg",
+  8: "/attached_assets/Whisk_64bd803a88_1750397059338.jpg",
+  9: "/attached_assets/Whisk_b7d789ba6c_1750397059339.jpg",
+  10: "/attached_assets/Whisk_c6c605e165_1750397059339.jpg",
+  11: "/attached_assets/Whisk_0b7230111a_1750678330066.jpg",
+  12: "/attached_assets/Whisk_1dbfbf354b_1750678330066.jpg",
+  13: "/attached_assets/Whisk_7ffa2c9406_1750678330067.jpg",
+  14: "/attached_assets/Whisk_8d85046c6b_1750678330067.jpg",
+  15: "/attached_assets/Whisk_35b331e8b1_1750678330067.jpg",
+  16: "/attached_assets/Whisk_87f882b40b_1750678330067.jpg",
+  17: "/attached_assets/Whisk_151bce4a40_1750678330068.jpg",
+  18: "/attached_assets/Whisk_9674787138_1750678330068.jpg",
+  19: "/attached_assets/Whisk_a9446c3df4_1750678330068.jpg",
+  20: "/attached_assets/Whisk_d7f0688d6d_1750678330068.jpg",
+  21: "/attached_assets/Whisk_e9d2dc169b_1750678330069.jpg",
+  22: "/attached_assets/Whisk_e833e9c856_1750678330069.jpg"
 } as const;
 
 export const personalityDescriptions = {
