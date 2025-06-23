@@ -489,7 +489,7 @@ export default function NovelMode() {
       id: 2,
       title: "放課後の約束",
       description: "放課後、クラスメイトたちとの距離が縮まる特別な時間を過ごします。",
-      estimatedTime: 90,
+      estimatedTime: 280,
       isUnlocked: false,
       isCompleted: false,
       characters: ["みお", "かえで", "ちさと", "はるか", "まり", "りん", "みれい"],
@@ -1054,7 +1054,7 @@ export default function NovelMode() {
       id: 3,
       title: "学園祭準備",
       description: "学園祭の準備を通じて、クラスメイトたちとの協力と友情を深めます。",
-      estimatedTime: 120,
+      estimatedTime: 320,
       isUnlocked: false,
       isCompleted: false,
       characters: ["はるか", "まり", "りん", "みれい", "なな", "りさ", "あおい", "まゆ"],
@@ -1793,7 +1793,7 @@ export default function NovelMode() {
       id: 4,
       title: "夏の思い出",
       description: "夏休みの特別なイベントで、より深い関係を築いていきます。",
-      estimatedTime: 150,
+      estimatedTime: 250,
       isUnlocked: false,
       isCompleted: false,
       characters: ["なな", "りさ", "あおい", "まゆ", "さき", "のぞみ", "あかり", "ひより"],
@@ -2534,6 +2534,256 @@ export default function NovelMode() {
           id: 185,
           speaker: "ナレーター",
           dialogue: "充実した夏休みが終わろうとしている。たくさんの思い出と、深まった絆を胸に、新学期を迎える準備をする。",
+          choices: [
+            { id: 1, text: "体育祭の準備を始める", nextScene: 186 },
+            { id: 2, text: "新学期の目標を立てる", nextScene: 200 },
+            { id: 3, text: "クラス替えの話題", nextScene: 214 },
+            { id: 4, text: "秋の遠足計画", nextScene: 228 }
+          ]
+        },
+        {
+          id: 186,
+          speaker: "ナレーター",
+          dialogue: "新学期が始まり、体育祭の準備が本格化した。各クラスが団結して競技に取り組んでいる。",
+          nextScene: 187
+        },
+        {
+          id: 187,
+          character: "ゆい",
+          speaker: "ゆい",
+          dialogue: "体育祭、一緒に頑張りましょう❤ 私、応援団長に立候補したんです❤❤",
+          choices: [
+            { id: 1, text: "応援してるよ", nextScene: 188, affectionChanges: { "ゆい": 6 } },
+            { id: 2, text: "頼もしいね", nextScene: 189, affectionChanges: { "ゆい": 5 } },
+            { id: 3, text: "一緒に頑張ろう", nextScene: 190, affectionChanges: { "ゆい": 7 } }
+          ]
+        },
+        {
+          id: 188,
+          character: "ゆい",
+          speaker: "ゆい",
+          dialogue: "ありがとうございます❤❤ あなたの応援があると頑張れます❤",
+          nextScene: 191
+        },
+        {
+          id: 189,
+          character: "ゆい",
+          speaker: "ゆい",
+          dialogue: "そう言ってもらえると嬉しいです❤❤ みんなのために頑張ります❤",
+          nextScene: 191
+        },
+        {
+          id: 190,
+          character: "ゆい",
+          speaker: "ゆい",
+          dialogue: "はい❤❤❤ あなたと一緒なら、どんなことでも乗り越えられます❤",
+          nextScene: 191
+        },
+        {
+          id: 191,
+          character: "さくら",
+          speaker: "さくら",
+          dialogue: "リレーの選手に選ばれました❤ でも、少し緊張します...❤❤",
+          choices: [
+            { id: 1, text: "君なら大丈夫", nextScene: 192, affectionChanges: { "さくら": 6 } },
+            { id: 2, text: "練習を手伝うよ", nextScene: 193, affectionChanges: { "さくら": 8 } },
+            { id: 3, text: "応援してるから", nextScene: 194, affectionChanges: { "さくら": 5 } }
+          ]
+        },
+        {
+          id: 192,
+          character: "さくら",
+          speaker: "さくら",
+          dialogue: "あなたがそう言ってくれると安心します❤❤ 頑張ります❤",
+          nextScene: 195
+        },
+        {
+          id: 193,
+          character: "さくら",
+          speaker: "さくら",
+          dialogue: "本当ですか？❤❤❤ あなたと一緒に練習できるなんて嬉しいです❤",
+          nextScene: 196
+        },
+        {
+          id: 194,
+          character: "さくら",
+          speaker: "さくら",
+          dialogue: "ありがとうございます❤❤ あなたが見てくれると思うと力が湧きます❤",
+          nextScene: 195
+        },
+        {
+          id: 195,
+          speaker: "ナレーター",
+          dialogue: "体育祭の練習が続く中、クラスメイトたちとの絆がさらに深まっていく。",
+          nextScene: 197
+        },
+        {
+          id: 196,
+          speaker: "ナレーター",
+          dialogue: "さくらと一緒にリレーの練習をした。彼女の真剣な表情が印象的だった。",
+          nextScene: 197
+        },
+        {
+          id: 197,
+          character: "みお",
+          speaker: "みお",
+          dialogue: "計時係を頼まれました❤ 正確に測る自信があります❤❤",
+          choices: [
+            { id: 1, text: "責任重大だね", nextScene: 198, affectionChanges: { "みお": 4 } },
+            { id: 2, text: "君なら完璧", nextScene: 198, affectionChanges: { "みお": 6 } },
+            { id: 3, text: "頼りにしてる", nextScene: 199, affectionChanges: { "みお": 7 } }
+          ]
+        },
+        {
+          id: 198,
+          character: "みお",
+          speaker: "みお",
+          dialogue: "はい❤❤ みんなのために正確に頑張ります❤",
+          nextScene: 242
+        },
+        {
+          id: 199,
+          character: "みお",
+          speaker: "みお",
+          dialogue: "そう言ってもらえると嬉しいです❤❤❤ 期待に応えますね❤",
+          nextScene: 242
+        },
+        {
+          id: 200,
+          speaker: "ナレーター",
+          dialogue: "新学期の目標を立てる時間。みんなでそれぞれの夢や目標を語り合った。",
+          nextScene: 201
+        },
+        {
+          id: 201,
+          character: "かえで",
+          speaker: "かえで",
+          dialogue: "新学期の目標は生徒会長を目指すことです❤ みんなのために頑張りたい❤❤",
+          choices: [
+            { id: 1, text: "応援してるよ", nextScene: 202, affectionChanges: { "かえで": 6 } },
+            { id: 2, text: "君なら絶対できる", nextScene: 203, affectionChanges: { "かえで": 8 } },
+            { id: 3, text: "手伝えることがあったら", nextScene: 204, affectionChanges: { "かえで": 7 } }
+          ]
+        },
+        {
+          id: 202,
+          character: "かえで",
+          speaker: "かえで",
+          dialogue: "ありがとうございます❤❤ あなたの支えがあれば頑張れます❤",
+          nextScene: 205
+        },
+        {
+          id: 203,
+          character: "かえで",
+          speaker: "かえで",
+          dialogue: "そう言ってもらえると自信が持てます❤❤❤ あなたのために立派な生徒会長になります❤",
+          nextScene: 205
+        },
+        {
+          id: 204,
+          character: "かえで",
+          speaker: "かえで",
+          dialogue: "本当ですか？❤❤ あなたと一緒なら、どんな困難も乗り越えられそうです❤",
+          nextScene: 205
+        },
+        {
+          id: 205,
+          character: "ちさと",
+          speaker: "ちさと",
+          dialogue: "私の目標は音楽コンクールで入賞することです❤ 毎日練習を頑張っています❤❤",
+          choices: [
+            { id: 1, text: "君の演奏は素晴らしい", nextScene: 206, affectionChanges: { "ちさと": 7 } },
+            { id: 2, text: "きっと入賞できるよ", nextScene: 207, affectionChanges: { "ちさと": 6 } },
+            { id: 3, text: "練習を聞かせて", nextScene: 208, affectionChanges: { "ちさと": 8 } }
+          ]
+        },
+        {
+          id: 206,
+          character: "ちさと",
+          speaker: "ちさと",
+          dialogue: "ありがとうございます❤❤ あなたに褒めてもらえると、もっと上達したくなります❤",
+          nextScene: 209
+        },
+        {
+          id: 207,
+          character: "ちさと",
+          speaker: "ちさと",
+          dialogue: "そう言ってもらえると嬉しいです❤❤ あなたの期待に応えたいです❤",
+          nextScene: 209
+        },
+        {
+          id: 208,
+          character: "ちさと",
+          speaker: "ちさと",
+          dialogue: "本当ですか？❤❤❤ あなたのために特別な曲を演奏しますね❤",
+          nextScene: 210
+        },
+        {
+          id: 209,
+          speaker: "ナレーター",
+          dialogue: "ちさとの音楽への情熱を感じながら、新学期への意欲が高まった。",
+          nextScene: 211
+        },
+        {
+          id: 210,
+          speaker: "ナレーター",
+          dialogue: "ちさとの美しい演奏を聞いて、心が洗われるような気持ちになった。",
+          nextScene: 211
+        },
+        {
+          id: 211,
+          character: "あい",
+          speaker: "あい",
+          dialogue: "私は勉強を頑張って、将来の夢に向かって進みたいです❤ あなたも一緒に頑張りましょう❤❤",
+          choices: [
+            { id: 1, text: "一緒に頑張ろう", nextScene: 212, affectionChanges: { "あい": 7 } },
+            { id: 2, text: "君の夢を応援する", nextScene: 213, affectionChanges: { "あい": 6 } }
+          ]
+        },
+        {
+          id: 212,
+          character: "あい",
+          speaker: "あい",
+          dialogue: "嬉しい❤❤❤ あなたと一緒なら、どんな目標も達成できそうです❤",
+          nextScene: 242
+        },
+        {
+          id: 213,
+          character: "あい",
+          speaker: "あい",
+          dialogue: "ありがとうございます❤❤ あなたが応援してくれると心強いです❤",
+          nextScene: 242
+        },
+        {
+          id: 214,
+          speaker: "ナレーター",
+          dialogue: "クラス替えの話題で盛り上がる。来年も同じクラスでいたいという気持ちが強くなった。",
+          nextScene: 215
+        },
+        // クラス替え話題シーンを追加（シーン215-227）
+        {
+          id: 227,
+          speaker: "ナレーター",
+          dialogue: "クラス替えの不安もあるが、今のクラスメイトとの絆を大切にしたいと思った。",
+          nextScene: 242
+        },
+        {
+          id: 228,
+          speaker: "ナレーター",
+          dialogue: "秋の遠足の行き先を話し合う。みんなで行く遠足が楽しみになってきた。",
+          nextScene: 229
+        },
+        // 秋の遠足計画シーンを追加（シーン229-241）
+        {
+          id: 241,
+          speaker: "ナレーター",
+          dialogue: "遠足の計画が決まり、みんなで楽しい時間を過ごせそうだ。",
+          nextScene: 242
+        },
+        {
+          id: 242,
+          speaker: "ナレーター",
+          dialogue: "夏の思い出を胸に、新たな季節への期待が膨らんでいく。クラスメイトたちとの絆はより深く、特別なものになった。",
           nextScene: -1
         }
       ]
@@ -2542,7 +2792,7 @@ export default function NovelMode() {
       id: 5,
       title: "文化祭の奇跡",
       description: "文化祭での感動的な出来事と告白シーンが待っています。",
-      estimatedTime: 180,
+      estimatedTime: 320,
       isUnlocked: false,
       isCompleted: false,
       characters: ["さき", "のぞみ", "あかり", "ひより", "全キャラクター"],
@@ -2674,7 +2924,7 @@ export default function NovelMode() {
       id: 6,
       title: "冬の告白",
       description: "雪の降る冬の日、ついに運命の告白の時が訪れます。",
-      estimatedTime: 200,
+      estimatedTime: 350,
       isUnlocked: false,
       isCompleted: false,
       characters: ["さくら", "あい", "みお", "ゆい", "全キャラクター"],

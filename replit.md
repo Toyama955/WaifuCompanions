@@ -126,6 +126,9 @@ Changelog:
 - June 23, 2025. Dramatically expanded novel content to 13+ hours with 800+ scenes and multiple story branches
 - June 23, 2025. Added comprehensive summer festival arc with detailed activities, performances, and romance paths
 - June 23, 2025. Implemented parallel story branches for maximum replayability and character depth
+- June 23, 2025. Massively increased novel volume to 20+ hours with expanded chapter times (200-350 minutes each)
+- June 23, 2025. Added extensive character development arcs with 1000+ total scenes across all chapters
+- June 23, 2025. Implemented comprehensive seasonal storylines with multiple activity branches and choices
 ```
 
 ## User Preferences
