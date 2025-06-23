@@ -108,6 +108,11 @@ Changelog:
 - June 20, 2025. Expanded message variations to 8 categories with 15+ messages each (112 total messages)
 - June 20, 2025. Fixed 404 navigation error from group chat to main page
 - June 20, 2025. Implemented sequential message display with 200ms intervals for realistic chat experience
+- June 20, 2025. Added 12 new characters (22 total): あかり, ひより, みお, かえで, ちさと, なな, りさ, あおい, まゆ, ゆい, さき, のぞみ
+- June 20, 2025. Expanded group chat dialogue to 12 categories with 300+ total message variations
+- June 20, 2025. Added new dialogue categories: 嫉妬・束縛系, プライベート・親密系, 将来・結婚系
+- June 20, 2025. Enhanced individual character response system with diverse personality types
+- June 20, 2025. Repositioned group chat button above "特別な機能" section per user request
 ```
 
 ## User Preferences
