@@ -113,6 +113,11 @@ Changelog:
 - June 20, 2025. Added new dialogue categories: 嫉妬・束縛系, プライベート・親密系, 将来・結婚系
 - June 20, 2025. Enhanced individual character response system with diverse personality types
 - June 20, 2025. Repositioned group chat button above "特別な機能" section per user request
+- June 20, 2025. Fixed character image mapping for all 22 characters in group chat
+- June 20, 2025. Implemented comprehensive jealousy dialogue system with 75+ jealousy expressions
+- June 20, 2025. Added "激しい嫉妬・ヤンデレ系" category with possessive and obsessive dialogue
+- June 20, 2025. Enhanced message categorization to detect jealousy triggers and keywords
+- June 20, 2025. Added jealousy category to affection calculation system (highest increase value)
 ```
 
 ## User Preferences
