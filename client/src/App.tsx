@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import CharacterSelection from "@/pages/character-selection";
 import ChatInterface from "@/pages/chat-interface";
 import GroupChat from "@/pages/group-chat";
+import NovelMode from "@/pages/novel-mode";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -14,6 +15,7 @@ function Router() {
       <Route path="/" component={CharacterSelection} />
       <Route path="/chat/:characterId" component={ChatInterface} />
       <Route path="/group-chat" component={GroupChat} />
+      <Route path="/novel-mode" component={NovelMode} />
       <Route component={NotFound} />
     </Switch>
   );

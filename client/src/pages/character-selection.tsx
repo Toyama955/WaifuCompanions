@@ -95,16 +95,30 @@ export default function CharacterSelection() {
 
         {/* Group Chat Button - Above Special Features */}
         <div className="text-center mb-8">
-          <Button 
-            size="lg" 
-            onClick={() => setLocation('/group-chat')}
-            className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-8 py-4 text-lg font-semibold shadow-lg rounded-full transform hover:scale-105 transition-all duration-300"
-          >
-            💕 みんなでグループチャット 💕
-          </Button>
-          <p className="text-sm text-pink-600 dark:text-pink-400 mt-2">
-            ✨ 全員と話します ✨
-          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              size="lg" 
+              onClick={() => setLocation('/group-chat')}
+              className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-8 py-4 text-lg font-semibold shadow-lg rounded-full transform hover:scale-105 transition-all duration-300"
+            >
+              💕 みんなでグループチャット 💕
+            </Button>
+            <Button 
+              size="lg" 
+              onClick={() => setLocation('/novel-mode')}
+              className="bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white px-8 py-4 text-lg font-semibold shadow-lg rounded-full transform hover:scale-105 transition-all duration-300"
+            >
+              📖 ノベルモード（3時間の物語）📖
+            </Button>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
+            <p className="text-sm text-pink-600 dark:text-pink-400">
+              ✨ 全員と話します ✨
+            </p>
+            <p className="text-sm text-purple-600 dark:text-purple-400">
+              ✨ 感動的な恋愛ストーリー ✨
+            </p>
+          </div>
         </div>
 
         {/* Feature Highlights */}

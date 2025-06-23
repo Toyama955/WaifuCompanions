@@ -118,6 +118,11 @@ Changelog:
 - June 20, 2025. Added "激しい嫉妬・ヤンデレ系" category with possessive and obsessive dialogue
 - June 20, 2025. Enhanced message categorization to detect jealousy triggers and keywords
 - June 20, 2025. Added jealousy category to affection calculation system (highest increase value)
+- June 23, 2025. Created comprehensive 3-hour novel mode with 6 chapters and 300+ story scenes
+- June 23, 2025. Implemented branching dialogue system with character affection tracking
+- June 23, 2025. Added progression system with chapter unlocking and save/load functionality
+- June 23, 2025. Integrated all 22 characters into seasonal story arcs with emotional depth
+- June 23, 2025. Built visual novel interface with character portraits and choice consequences
 ```
 
 ## User Preferences
