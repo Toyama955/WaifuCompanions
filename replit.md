@@ -129,6 +129,7 @@ Changelog:
 - June 23, 2025. Massively increased novel volume to 20+ hours with expanded chapter times (200-350 minutes each)
 - June 23, 2025. Added extensive character development arcs with 1000+ total scenes across all chapters
 - June 23, 2025. Implemented comprehensive seasonal storylines with multiple activity branches and choices
+- June 23, 2025. Removed descriptive text "感動的な恋愛ストーリー" and "(3時間の物語)" from main page per user request
 ```
 
 ## User Preferences

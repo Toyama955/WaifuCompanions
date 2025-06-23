@@ -108,16 +108,14 @@ export default function CharacterSelection() {
               onClick={() => setLocation('/novel-mode')}
               className="bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white px-8 py-4 text-lg font-semibold shadow-lg rounded-full transform hover:scale-105 transition-all duration-300"
             >
-              📖 ノベルモード（3時間の物語）📖
+              📖 ノベルモード 📖
             </Button>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
             <p className="text-sm text-pink-600 dark:text-pink-400">
               ✨ 全員と話します ✨
             </p>
-            <p className="text-sm text-purple-600 dark:text-purple-400">
-              ✨ 感動的な恋愛ストーリー ✨
-            </p>
+
           </div>
         </div>
 
